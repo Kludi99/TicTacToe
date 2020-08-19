@@ -130,7 +130,7 @@
             this.A00.Size = new System.Drawing.Size(75, 75);
             this.A00.TabIndex = 2;
             this.A00.UseVisualStyleBackColor = true;
-            this.A00.Click += new System.EventHandler(this.button_click);
+            this.A00.Click += new System.EventHandler(this.Button_click);
             this.A00.MouseEnter += new System.EventHandler(this.button_enter);
             this.A00.MouseLeave += new System.EventHandler(this.button_leave);
             // 
@@ -142,7 +142,7 @@
             this.A01.Size = new System.Drawing.Size(75, 75);
             this.A01.TabIndex = 3;
             this.A01.UseVisualStyleBackColor = true;
-            this.A01.Click += new System.EventHandler(this.button_click);
+            this.A01.Click += new System.EventHandler(this.Button_click);
             this.A01.MouseEnter += new System.EventHandler(this.button_enter);
             this.A01.MouseLeave += new System.EventHandler(this.button_leave);
             // 
@@ -154,7 +154,7 @@
             this.A02.Size = new System.Drawing.Size(75, 75);
             this.A02.TabIndex = 4;
             this.A02.UseVisualStyleBackColor = true;
-            this.A02.Click += new System.EventHandler(this.button_click);
+            this.A02.Click += new System.EventHandler(this.Button_click);
             this.A02.MouseEnter += new System.EventHandler(this.button_enter);
             this.A02.MouseLeave += new System.EventHandler(this.button_leave);
             // 
@@ -166,7 +166,7 @@
             this.A10.Size = new System.Drawing.Size(75, 75);
             this.A10.TabIndex = 5;
             this.A10.UseVisualStyleBackColor = true;
-            this.A10.Click += new System.EventHandler(this.button_click);
+            this.A10.Click += new System.EventHandler(this.Button_click);
             this.A10.MouseEnter += new System.EventHandler(this.button_enter);
             this.A10.MouseLeave += new System.EventHandler(this.button_leave);
             // 
@@ -178,7 +178,7 @@
             this.A11.Size = new System.Drawing.Size(75, 75);
             this.A11.TabIndex = 6;
             this.A11.UseVisualStyleBackColor = true;
-            this.A11.Click += new System.EventHandler(this.button_click);
+            this.A11.Click += new System.EventHandler(this.Button_click);
             this.A11.MouseEnter += new System.EventHandler(this.button_enter);
             this.A11.MouseLeave += new System.EventHandler(this.button_leave);
             // 
@@ -190,7 +190,7 @@
             this.A12.Size = new System.Drawing.Size(75, 75);
             this.A12.TabIndex = 7;
             this.A12.UseVisualStyleBackColor = true;
-            this.A12.Click += new System.EventHandler(this.button_click);
+            this.A12.Click += new System.EventHandler(this.Button_click);
             this.A12.MouseEnter += new System.EventHandler(this.button_enter);
             this.A12.MouseLeave += new System.EventHandler(this.button_leave);
             // 
@@ -202,7 +202,7 @@
             this.A20.Size = new System.Drawing.Size(75, 75);
             this.A20.TabIndex = 8;
             this.A20.UseVisualStyleBackColor = true;
-            this.A20.Click += new System.EventHandler(this.button_click);
+            this.A20.Click += new System.EventHandler(this.Button_click);
             this.A20.MouseEnter += new System.EventHandler(this.button_enter);
             this.A20.MouseLeave += new System.EventHandler(this.button_leave);
             // 
@@ -214,7 +214,7 @@
             this.A21.Size = new System.Drawing.Size(75, 75);
             this.A21.TabIndex = 9;
             this.A21.UseVisualStyleBackColor = true;
-            this.A21.Click += new System.EventHandler(this.button_click);
+            this.A21.Click += new System.EventHandler(this.Button_click);
             this.A21.MouseEnter += new System.EventHandler(this.button_enter);
             this.A21.MouseLeave += new System.EventHandler(this.button_leave);
             // 
@@ -226,7 +226,7 @@
             this.A22.Size = new System.Drawing.Size(75, 75);
             this.A22.TabIndex = 10;
             this.A22.UseVisualStyleBackColor = true;
-            this.A22.Click += new System.EventHandler(this.button_click);
+            this.A22.Click += new System.EventHandler(this.Button_click);
             this.A22.MouseEnter += new System.EventHandler(this.button_enter);
             this.A22.MouseLeave += new System.EventHandler(this.button_leave);
             // 

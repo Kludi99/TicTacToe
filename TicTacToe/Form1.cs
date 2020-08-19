@@ -43,14 +43,13 @@ namespace TicTacToe
         {
             Application.Exit();
         }
-
-        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewGame()
         {
             turn = true;
             turn_counter = 0;
-            
+
             foreach (Control control in Controls)
-           {
+            {
                 try
                 {
                     Button button = (Button)control;
@@ -61,10 +60,14 @@ namespace TicTacToe
                 }
                 catch { }
             }
+        }
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
             
         }
 
-        private void button_click(object sender, EventArgs e)
+        private void Button_click(object sender, EventArgs e)
         {
             if (p1.Text == "Player 1" && p2.Text == "Player 2")
                 MessageBox.Show("You must specify players' names before you start. If you want to play against the computer type 'computer' in the second textbox", "Error");
@@ -82,11 +85,143 @@ namespace TicTacToe
                 turn = !turn;
                 turn_counter++;
                 button.Enabled = false;
-                checkWinner();
+                CheckWinner();
             }
+            if ((!turn) && (computer_against) &&(LookForSpace()!=null))
+                ComputerMove();
             
         }
-        private void checkWinner()
+
+        private void ComputerMove()
+        {
+            Button computerMove = null;
+
+            computerMove = LookForWinOrBlockOpponent("O"); //Look for win
+            if(computerMove == null) //can't win on one click
+            {
+                computerMove = LookForWinOrBlockOpponent("X"); //look for block opponent
+                if(computerMove == null) // there aren't 2 X in 1 line
+                {
+                    computerMove = LookForCorner(); //look for empty corner
+                    if (computerMove == null) //there isn't any empty corner
+                        computerMove = LookForSpace(); // look for empty space
+                }
+            }
+
+            computerMove.PerformClick();
+            computerMove.BackColor = Color.DarkBlue;
+        }
+        private Button LookForWinOrBlockOpponent(string character)
+        {
+            //Horizontal
+            //first line
+            if ((A00.Text == character) && (A01.Text == character) && (A02.Text == ""))
+                return A02;
+            if ((A00.Text == character) && (A01.Text == "") && (A02.Text == character))
+                return A01;
+            if ((A00.Text == "") && (A01.Text == character) && (A02.Text == character))
+                return A00;
+            //second line
+            if ((A10.Text == character) && (A11.Text == character) && (A12.Text == ""))
+                return A12;
+            if ((A10.Text == character) && (A11.Text == "") && (A12.Text == character))
+                return A11;
+            if ((A10.Text == "") && (A11.Text == character) && (A12.Text == character))
+                return A10;
+            //third line
+            if ((A20.Text == character) && (A21.Text == character) && (A22.Text == ""))
+                return A22;
+            if ((A20.Text == character) && (A21.Text == "") && (A22.Text == character))
+                return A21;
+            if ((A20.Text == "") && (A21.Text == character) && (A22.Text == character))
+                return A20;
+            //vertical
+            //first line
+            if ((A00.Text == character) && (A10.Text == character) && (A20.Text == ""))
+                return A20;
+            if ((A00.Text == character) && (A10.Text == "") && (A20.Text == character))
+                return A10;
+            if ((A00.Text == "") && (A10.Text == character) && (A20.Text == character))
+                return A00;
+            //second line
+            if ((A01.Text == character) && (A11.Text == character) && (A21.Text == ""))
+                return A21;
+            if ((A01.Text == character) && (A11.Text == "") && (A21.Text == character))
+                return A11;
+            if ((A01.Text == "") && (A11.Text == character) && (A21.Text == character))
+                return A01;
+            //third line
+            if ((A02.Text == character) && (A12.Text == character) && (A22.Text == ""))
+                return A21;
+            if ((A02.Text == character) && (A12.Text == "") && (A22.Text == character))
+                return A11;
+            if ((A02.Text == "") && (A12.Text == character) && (A22.Text == character))
+                return A02;
+            //Diagonal 
+            //up-left down-right
+            if ((A00.Text == character) && (A11.Text == character) && (A22.Text == ""))
+                return A22;
+            if ((A00.Text == character) && (A11.Text == "") && (A22.Text == character))
+                return A11;
+            if ((A00.Text == "") && (A11.Text == character) && (A22.Text == character))
+                return A00;
+            //up-right down-left
+            if ((A02.Text == character) && (A11.Text == character) && (A20.Text == ""))
+                return A20;
+            if ((A02.Text == character) && (A11.Text == "") && (A20.Text == character))
+                return A11;
+            if ((A02.Text == "") && (A11.Text == character) && (A20.Text == character))
+                return A02;
+
+            return null;
+        }
+        private Button LookForCorner()
+        {
+
+            if(A00.Text=="O") //left-up corner
+            {
+                if (A02.Text == "") return A02;
+                if (A20.Text == "") return A20;
+                if (A22.Text == "") return A22;
+            }
+            if (A02.Text == "O") //Right-Up corner
+            {
+                if (A00.Text == "") return A00;
+                if (A20.Text == "") return A20;
+                if (A22.Text == "") return A22;
+            }
+            if (A20.Text == "O") //left-down corner
+            {
+                if (A02.Text == "") return A02;
+                if (A00.Text == "") return A00;
+                if (A22.Text == "") return A22;
+            }
+            if (A22.Text == "O") //right-down corner
+            {
+                if (A02.Text == "") return A02;
+                if (A20.Text == "") return A20;
+                if (A00.Text == "") return A00;
+            }
+            //there isn't any "O" in the corners check if there is any empty corner
+            if (A00.Text == "") return A00;
+            if (A02.Text == "") return A02;
+            if (A20.Text == "") return A20;
+            if (A22.Text == "") return A22;
+
+            return null; 
+        }
+        private Button LookForSpace()
+        {
+            Button button = null;
+            foreach(Control control in Controls)
+            {
+                button = control as Button;
+                if (button != null && button.Text == "")
+                    return button;
+            }
+            return null;
+        }
+        private void CheckWinner()
         {
             bool winner = false;
             //horizontal
@@ -130,6 +265,7 @@ namespace TicTacToe
                     
 
                 MessageBox.Show(win + " wins!", "End");
+                NewGame();
             }
             else 
             {
@@ -137,9 +273,13 @@ namespace TicTacToe
                 {
                     DrawCount.Text = (int.Parse(DrawCount.Text) + 1).ToString();
                     MessageBox.Show("Draw!", "End");
+                    NewGame();
                 }
                     
             }
+            
+            
+
         }
         private void disableButton()
         {
@@ -197,7 +337,9 @@ namespace TicTacToe
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OWinCount.Text = XWinCount.Text = DrawCount.Text = "0";
-            newGameToolStripMenuItem_Click( sender,  e);
+            NewGame();
+            p1.Text = "Player 1";
+            p2.Text = "Player 2";
         }
 
         private void p2_TextChanged(object sender, EventArgs e)
