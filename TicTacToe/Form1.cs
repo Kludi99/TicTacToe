@@ -107,9 +107,9 @@ namespace TicTacToe
                         computerMove = LookForSpace(); // look for empty space
                 }
             }
-
-            computerMove.PerformClick();
             computerMove.BackColor = Color.DarkBlue;
+            computerMove.PerformClick();
+            
         }
         private Button LookForWinOrBlockOpponent(string character)
         {
